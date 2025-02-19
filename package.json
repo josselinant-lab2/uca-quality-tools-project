@@ -1,23 +1,29 @@
 {
-    "name": "blog-quality-project",
-    "version": "1.0.0",
-    "description": "Projet noté - Qualité algorithmique",
-    "main": "src/index.js",
-    "scripts": {
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.js",
-        "format": "prettier --write .",
-        "prepare": "husky"
-    },
-    "dependencies": {
-        "ejs": "^3.1.10",
-        "express": "^4.21.2"
-    },
-    "devDependencies": {
-        "@commitlint/cli": "^19.7.1",
-        "@commitlint/config-conventional": "^19.7.1",
-        "commitlint": "^19.7.1",
-        "husky": "^9.1.7",
-        "nodemon": "^3.1.9"
-    }
+  "name": "blog-quality-project",
+  "version": "1.0.0",
+  "description": "Projet noté - Qualité algorithmique",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "format": "prettier --write .",
+    "lint": "eslint src/",
+    "lint:fix": "eslint --fix src/",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/js": "^9.20.0",
+    "commitlint": "^19.7.1",
+    "eslint": "^9.20.1",
+    "globals": "^15.15.0",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "typescript-eslint": "^8.24.1"
+  }
 }
