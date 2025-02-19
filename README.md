@@ -3,7 +3,9 @@
 Les règles à respecter :
 -4 espaces pour les indentations
 -Point-virgule à la fin de chaque ligne
--Double quotes pour les chaînes de caractères - Pas de virgule à la fin des objets et des tableaux - Largeur de 180 caractères
+-Double quotes pour les chaînes de caractères
+-Pas de virgule à la fin des objets et des tableaux
+-Largeur de 180 caractères
 
 ### Configuration de Prettier
 
@@ -49,7 +51,12 @@ La configuration peut être modifié depuis le fichier `eslint.config.mjs` pour 
 Pour avoir les erreurs directement intégrées dans votre IDE, il faut :
 
 1. Installer un plugin/extension sur votre IDE (pour VSCode: [extension ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint))
-2. Installer les dépendances du projet : `npm install`
+2. Installer les dépendances du projet :
+
+```sh
+npm install
+```
+
 3. Configurer votre plugin/extension pour l'adapter à votre besoin (par exemple, sur VSCode si vous voulez qu'ESLint puisse modifier vos fichiers, changez le paramètre `eslint.format.enable`)
 
 Une fois ces étapes faites vous devriez avoir des indicateurs directement sur votre IDE de potentiels problèmes.
@@ -71,36 +78,61 @@ Mettre breakingpoint pour voir les valerus des varaibles au point d'arrêt.
 Lancer le serveur
 
 Test pour la page d'accueil
-Commande :
-`npx autocannon -c 50 -d 10 http://localhost:3009/`
-Durée du test : 15 sec (temps moyens sur la page d'acccueil)
-Charge : 50 utilisateur simultané car page d'accueil
-Latence moyenne de 34.74 ms
+
+- Commande :
+
+```sh
+npx autocannon -c 50 -d 10 http://localhost:3009/
+```
+
+- Durée du test : 15 sec (temps moyens sur la page d'acccueil)
+- Charge : 50 utilisateur simultané car page d'accueil
+- Latence moyenne de 34.74 ms
 
 Test sur la liste des posts
-Commande :
-`npx autocannon -c 100 -d 20 http://localhost:3009/posts`
-Durée du test : 20 sec (temps moyens)
-Charge : 100 utilisateurs simultanés
-Latence moyenne de 4122.64 ms
+
+- Commande :
+
+```sh
+npx autocannon -c 100 -d 20 http://localhost:3009/posts
+```
+
+- Durée du test : 20 sec (temps moyens)
+- Charge : 100 utilisateurs simultanés
+- Latence moyenne de 4122.64 ms
 
 Test sur la liste dun post spécifique
-Commande :
-`npx autocannon -c 80 -d 15 http://localhost:3009/posts/1`
+
+-   - Commande :
+
+```sh
+npx autocannon -c 80 -d 15 http://localhost:3009/posts/1
+```
+
 Durée du test : 15 sec (temps moyens)
 Charge : 80 utilisateurs simultanés
 Latence moyenne de 83.16 ms
 
 Test sur la création de post
-Commande :
-`npx autocannon -c 30 -d 10 http://localhost:3009/posts/new`
-Durée du test : 10 sec (temps moyens)
-Charge : 30 utilisateurs simultanés
-Latence moyenne de 21.94 ms
+
+- Commande :
+
+```sh
+npx autocannon -c 30 -d 10 http://localhost:3009/posts/new
+```
+
+- Durée du test : 10 sec (temps moyens)
+- Charge : 30 utilisateurs simultanés
+- Latence moyenne de 21.94 ms
 
 Test sur l'édition d'un post
-Commande :
-`npx autocannon -c 40 -d 12 http://localhost:3009/posts/1/edit`
-Durée du test : 12 sec (temps moyens)
-Charge : 40 utilisateurs simultanés
-Latence moyenne de 32.09 ms
+
+- Commande :
+
+```sh
+npx autocannon -c 40 -d 12 http://localhost:3009/posts/1/edit
+```
+
+- Durée du test : 12 sec (temps moyens)
+- Charge : 40 utilisateurs simultanés
+- Latence moyenne de 32.09 ms
