@@ -30,7 +30,9 @@ Pour le lancer sur le code source du projet (dossier `src/`), il faut exécuter 
 ```sh
 npm run lint
 ```
+
 ou
+
 ```sh
 npm run lint:fix
 ```
@@ -45,21 +47,22 @@ La configuration peut être modifié depuis le fichier `eslint.config.mjs` pour 
 ### Mise en place sur l'IDE
 
 Pour avoir les erreurs directement intégrées dans votre IDE, il faut :
+
 1. Installer un plugin/extension sur votre IDE (pour VSCode: [extension ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint))
 2. Installer les dépendances du projet : `npm install`
 3. Configurer votre plugin/extension pour l'adapter à votre besoin (par exemple, sur VSCode si vous voulez qu'ESLint puisse modifier vos fichiers, changez le paramètre `eslint.format.enable`)
 
 Une fois ces étapes faites vous devriez avoir des indicateurs directement sur votre IDE de potentiels problèmes.
 
-# Degugger avec inspect
+# Dégugger avec inspect
 
 Il faut aller dans le débuggage de VS code
 
 Ensuite choisir la configuration `Node.js`
 
-Chosiir `Run Script:debug`
+Choisir `Run Script:debug`
 
-Lancer le debugage
+Lancer le débugage
 
 Mettre breakingpoint pour voir les valerus des varaibles au point d'arrêt.
 
