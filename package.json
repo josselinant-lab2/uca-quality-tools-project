@@ -4,8 +4,8 @@
   "description": "Projet noté - Qualité algorithmique",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.ts",
-    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon",
     "tsc:build": "tsc",
     "tsc:check": "tsc --noEmit",
     "tsc:watch": "tsc --watch",
