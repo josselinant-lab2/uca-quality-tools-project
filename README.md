@@ -84,6 +84,10 @@ Test pour la page d'accueil
 ```sh
 npx autocannon -c 50 -d 10 http://localhost:3009/
 ```
+ou
+```
+npm run test:charge -- -c 50 -d 10 http://localhost:3009/
+```
 
 - Durée du test : 15 sec (temps moyens sur la page d'acccueil)
 - Charge : 50 utilisateur simultané car page d'accueil
@@ -95,6 +99,10 @@ Test sur la liste des posts
 
 ```sh
 npx autocannon -c 100 -d 20 http://localhost:3009/posts
+```
+ou
+```
+npm run test:charge -- -c 100 -d 20 http://localhost:3009/posts
 ```
 
 - Durée du test : 20 sec (temps moyens)
@@ -108,6 +116,10 @@ Test sur la liste dun post spécifique
 ```sh
 npx autocannon -c 80 -d 15 http://localhost:3009/posts/1
 ```
+ou
+```
+npm run test:charge -- -c 80 -d 15 http://localhost:3009/posts/1
+```
 
 Durée du test : 15 sec (temps moyens)
 Charge : 80 utilisateurs simultanés
@@ -120,6 +132,10 @@ Test sur la création de post
 ```sh
 npx autocannon -c 30 -d 10 http://localhost:3009/posts/new
 ```
+ou
+```sh
+npm run test:charge -- -c 40 -d 12 http://localhost:3009/posts/1/edit
+```
 
 - Durée du test : 10 sec (temps moyens)
 - Charge : 30 utilisateurs simultanés
@@ -131,6 +147,10 @@ Test sur l'édition d'un post
 
 ```sh
 npx autocannon -c 40 -d 12 http://localhost:3009/posts/1/edit
+```
+ou
+```sh
+npm run test:charge -- -c 40 -d 12 http://localhost:3009/posts/1/edit
 ```
 
 - Durée du test : 12 sec (temps moyens)
