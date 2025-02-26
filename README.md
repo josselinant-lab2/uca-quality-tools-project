@@ -3,7 +3,6 @@ Groupe : OULAHAL Bilal & ANTONY Josselin B1
 ## Utilisation de Prettier
 
 Les règles à respecter :
-
     - 4 espaces pour les indentations
     - Point-virgule à la fin de chaque ligne
     - Double quotes pour les chaînes de caractères
@@ -27,15 +26,52 @@ Pour configurer VS code pour le formatage nous avons suivis ces étapes :
     -Activer le formatage automatique lors de l'enregistrement
     -Configurer les paramètres de l'espace de travail
 
-# Degugger avec inspect
+## Utilisation d'ESLint
+
+ESLint permet d'avoir une analyse statique du code pour corriger de potentielles erreurs.
+Pour le lancer sur le code source du projet (dossier `src/`), il faut exécuter une de ces commandes :
+
+```sh
+npm run lint
+```
+
+ou
+
+```sh
+npm run lint:fix
+```
+
+La première commande affiche les erreurs et warnings alors que la seconde tentera en plus de corriger certains problèmes (par exemple: des points virgules manquants)
+
+### Configuration d'ESLint
+
+La configuration se base sur la configuration générale d'ESLint pour le Javascript et le TypeScript mais permet aussi d'ajouter de nouvelles règles.
+La configuration peut être modifié depuis le fichier `eslint.config.mjs` pour ajouter ou modifier des règles personnalisés.
+
+### Mise en place sur l'IDE
+
+Pour avoir les erreurs directement intégrées dans votre IDE, il faut :
+
+1. Installer un plugin/extension sur votre IDE (pour VSCode: [extension ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint))
+2. Installer les dépendances du projet :
+
+```sh
+npm install
+```
+
+3. Configurer votre plugin/extension pour l'adapter à votre besoin (par exemple, sur VSCode si vous voulez qu'ESLint puisse modifier vos fichiers, changez le paramètre `eslint.format.enable`)
+
+Une fois ces étapes faites vous devriez avoir des indicateurs directement sur votre IDE de potentiels problèmes.
+
+# Dégugger avec inspect
 
 Il faut aller dans le débuggage de VS code.
 
 Ensuite choisir la configuration `Node.js` .
 
-Chosiir `Run Script:debug` .
+Choisir `Run Script:debug`
 
-Lancer le debugage.
+Lancer le débugage
 
 Mettre breakingpoint pour voir les valerus des varaibles au point d'arrêt.
 
@@ -43,60 +79,85 @@ Mettre breakingpoint pour voir les valerus des varaibles au point d'arrêt.
 
 Lancer le serveur.
 
-Test pour la page d'accueil  
-Commande :
+Test pour la page d'accueil
+
+- Commande :
 
 ```sh
 npx autocannon -c 50 -d 10 http://localhost:3009/
 ```
+ou
+```
+npm run test:charge -- -c 50 -d 10 http://localhost:3009/
+```
 
-Durée du test : 15 sec (temps moyens sur la page d'acccueil)  
-Charge : 50 utilisateur simultané car page d'accueil  
-Latence moyenne de 34.74 ms
+- Durée du test : 15 sec (temps moyens sur la page d'acccueil)
+- Charge : 50 utilisateur simultané car page d'accueil
+- Latence moyenne de 34.74 ms
 
-Test sur la liste des posts  
-Commande :
+Test sur la liste des posts
+
+- Commande :
 
 ```sh
 npx autocannon -c 100 -d 20 http://localhost:3009/posts
 ```
+ou
+```
+npm run test:charge -- -c 100 -d 20 http://localhost:3009/posts
+```
 
-Durée du test : 20 sec (temps moyens)  
-Charge : 100 utilisateurs simultanés  
-Latence moyenne de 4122.64 ms
+- Durée du test : 20 sec (temps moyens)
+- Charge : 100 utilisateurs simultanés
+- Latence moyenne de 4122.64 ms
 
-Test sur la liste dun post spécifique  
-Commande :
+Test sur la liste d'un post spécifique
+
+- Commande :
 
 ```sh
 npx autocannon -c 80 -d 15 http://localhost:3009/posts/1
 ```
+ou
+```
+npm run test:charge -- -c 80 -d 15 http://localhost:3009/posts/1
+```
 
-Durée du test : 15 sec (temps moyens)  
-Charge : 80 utilisateurs simultanés  
+Durée du test : 15 sec (temps moyens)
+Charge : 80 utilisateurs simultanés
 Latence moyenne de 83.16 ms
 
-Test sur la création de post  
-Commande :
+Test sur la création de post
+
+- Commande :
 
 ```sh
 npx autocannon -c 30 -d 10 http://localhost:3009/posts/new
 ```
+ou
+```sh
+npm run test:charge -- -c 40 -d 12 http://localhost:3009/posts/1/edit
+```
 
-Durée du test : 10 sec (temps moyens)  
-Charge : 30 utilisateurs simultanés  
-Latence moyenne de 21.94 ms
+- Durée du test : 10 sec (temps moyens)
+- Charge : 30 utilisateurs simultanés
+- Latence moyenne de 21.94 ms
 
-Test sur l'édition d'un post  
-Commande :
+Test sur l'édition d'un post
+
+- Commande :
 
 ```sh
 npx autocannon -c 40 -d 12 http://localhost:3009/posts/1/edit
 ```
+ou
+```sh
+npm run test:charge -- -c 40 -d 12 http://localhost:3009/posts/1/edit
+```
 
-Durée du test : 12 sec (temps moyens)  
-Charge : 40 utilisateurs simultanés  
-Latence moyenne de 32.09 ms
+- Durée du test : 12 sec (temps moyens)
+- Charge : 40 utilisateurs simultanés
+- Latence moyenne de 32.09 ms
 
 # Tests unitaires
 

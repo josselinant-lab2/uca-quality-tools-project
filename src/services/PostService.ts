@@ -1,6 +1,17 @@
-const data = require("../data.json");
+import data from "../data.json";
 
-class PostService {
+type Post = {
+    id: number;
+    title: string;
+    content: string;
+    author: string;
+    createdAt: string;
+    updatedAt?: string;
+};
+
+export class PostService {
+    private posts: Post[];
+    
     constructor() {
         this.posts = [...data.posts];
     }
@@ -9,11 +20,11 @@ class PostService {
         return this.posts;
     }
 
-    getPostById(id) {
+    getPostById(id: number) {
         return this.posts.find((post) => post.id == id);
     }
 
-    createPost(postData) {
+    createPost(postData: Post) {
         const newPost = {
             id: this.posts.length + 1,
             title: postData.title,
@@ -25,12 +36,14 @@ class PostService {
         return newPost;
     }
 
-    updatePost(id, postData) {
+    updatePost(id: number, postData: Post) {
         const index = this.posts.findIndex((post) => post.id == id);
         if (index == -1) return null;
 
+        const postToBeModified = this.posts[index] as Post;
+
         this.posts[index] = {
-            ...this.posts[index],
+            ...postToBeModified,
             title: postData.title,
             content: postData.content,
             author: postData.author,
@@ -40,5 +53,3 @@ class PostService {
         return this.posts[index];
     }
 }
-
-module.exports = PostService;
