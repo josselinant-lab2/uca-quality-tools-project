@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main, develop, feat/add-github-pipeline]
 
+# Node_modules a été passé en artefact pour alléger la pipeline
+# mais malgré sa présence vérifiée (à l'aide de `ls`) dans chaque job
+# les commandes npm ne fonctionnent pas sans réinstaller les dépendances
+
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -25,12 +29,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-      - run: ls node_modules | grep vitest
-      - name: Upload node_modules as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules/
+
+#      - name: Upload node_modules as artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: node_modules-${{ matrix.node-version }}
+#          path: node_modules/
 
   lint:
     runs-on: ubuntu-latest
@@ -49,13 +53,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
+#      - name: Download node_modules
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: node_modules-${{ matrix.node-version }}
+#          path: node_modules
 
-      - run: ls
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run ESLint
         run: npm run lint
@@ -77,13 +82,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
+#      - name: Download node_modules
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: node_modules-${{ matrix.node-version }}
+#          path: node_modules
 
-      - run: ls node_modules | grep vitest
+      - name: Install dependencies
+        run: npm ci
+
       - name: Run unit tests
         run: npm run test:unit
 
@@ -104,13 +111,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
+#      - name: Download node_modules
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: node_modules-${{ matrix.node-version }}
+#          path: node_modules
 
-      - run: ls
+      - name: Install dependencies
+        run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
