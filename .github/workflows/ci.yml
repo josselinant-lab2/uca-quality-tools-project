@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main, develop, feat/add-github-pipeline]
+    branches: [ main, develop]
   pull_request:
-    branches: [ main, develop, feat/add-github-pipeline]
+    branches: [ main, develop]
 
 # Node_modules a été passé en artefact pour alléger la pipeline
 # mais malgré sa présence vérifiée (à l'aide de `ls`) dans chaque job
