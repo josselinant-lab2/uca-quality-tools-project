@@ -25,13 +25,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
+      - run : echo $NODE_ENV
       - name: Upload node_modules as artifact
         uses: actions/upload-artifact@v4
         with:
           name: node_modules-${{ matrix.node-version }}
           path: node_modules/
-          if-no-longer-needed: true
 
   lint:
     runs-on: ubuntu-latest
