@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x, 18.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout repository
@@ -22,15 +22,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Upload node_modules
-        uses: actions/upload-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
 
   lint:
     runs-on: ubuntu-latest
@@ -38,7 +33,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x, 18.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout repository
@@ -48,12 +43,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
+          cache: npm
 
       - name: Run ESLint
         run: npm run lint
@@ -64,7 +54,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x, 18.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout repository
@@ -74,12 +64,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
+          cache: npm
 
       - name: Run unit tests
         run: npm run test:unit
@@ -90,7 +75,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x, 18.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout repository
@@ -100,12 +85,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-${{ matrix.node-version }}
-          path: node_modules
+          cache: npm
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
