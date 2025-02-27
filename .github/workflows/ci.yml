@@ -48,6 +48,8 @@ jobs:
           cache: npm
 
       - run: ls
+      - run: pwd
+      - run: ls /home/runner/.npm
       - name: Run ESLint
         run: npm run lint
 
