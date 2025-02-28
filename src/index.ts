@@ -1,7 +1,6 @@
 import express from "express";
 import { PostService } from "./services/PostService";
-
-const Sentry = require("../instrument");
+import Sentry from "../instrument";
 
 const app = express();
 
@@ -57,15 +56,16 @@ app.post("/posts/:id", (req, res) => {
     res.redirect(`/posts/${req.params.id}`);
 });
 
-app.get("/debug-sentry", (_req, _res) => {
+// Route pour tester Sentry
+app.get("/debug-sentry", () => {
     throw new Error("My first Sentry error!");
 });
 
 // Middleware d'erreur Sentry
-app.use(Sentry.Handlers.errorHandler());
+Sentry.setupExpressErrorHandler(app);
 
 // Gestion des erreurs générales
-app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+app.use((err: Error, _req: express.Request, res: express.Response) => {
     console.error("Error captured by Sentry:", err);
     res.status(500).send("An unexpected error occurred.");
 });
