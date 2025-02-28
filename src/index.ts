@@ -1,6 +1,6 @@
+import Sentry from "../instrument";
 import express from "express";
 import { PostService } from "./services/PostService";
-import Sentry from "../instrument";
 
 const app = express();
 
