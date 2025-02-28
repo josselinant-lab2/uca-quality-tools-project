@@ -48,8 +48,10 @@
         "typescript-eslint": "^8.24.1"
     },
     "nodemonConfig": {
-      "watch": ["src"],
-      "ext": "ts,js,json,ejs",
-      "exec": "ts-node src/index.ts"
+        "watch": [
+            "src"
+        ],
+        "ext": "ts,js,json,ejs",
+        "exec": "ts-node src/index.ts"
     }
 }

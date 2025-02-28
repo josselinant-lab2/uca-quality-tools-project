@@ -101,7 +101,7 @@ jobs:
         strategy:
             matrix:
                 node-version: [20.x]
-        
+
         continue-on-error: true # Cette ligne est présente tant que les tests e2e ne sont pas entièrement fonctionnelles
 
         steps:
