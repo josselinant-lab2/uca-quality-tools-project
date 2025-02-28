@@ -1,0 +1,12 @@
+{
+  "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch with TypeScript",
+            "program": "${workspaceFolder}/src/index.ts",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": ["${workspaceFolder}/.output/**/*.js"]
+        }
+    ]
+}
