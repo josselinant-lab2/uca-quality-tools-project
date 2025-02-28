@@ -1,20 +1,18 @@
 import express from "express";
 import { PostService } from "./services/PostService";
 
+const Sentry = require("../instrument");
+
 const app = express();
 
 app.use(express.json());
+
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
 app.use(express.urlencoded({ extended: true }));
 
 const postService = new PostService();
-
-/*
-Les underscores (_) remplacent les `req` car ils permettent de dire explicitement
-que la variable ne sera pas utilisée sans créer de problème avec la récupération des paramètres suivants (dans ce cas: `res`)
-*/
 
 app.get("/", (_, res) => {
     res.render("home");
@@ -59,7 +57,20 @@ app.post("/posts/:id", (req, res) => {
     res.redirect(`/posts/${req.params.id}`);
 });
 
+app.get("/debug-sentry", (_req, _res) => {
+    throw new Error("My first Sentry error!");
+});
+
+// Middleware d'erreur Sentry
+app.use(Sentry.Handlers.errorHandler());
+
+// Gestion des erreurs générales
+app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error("Error captured by Sentry:", err);
+    res.status(500).send("An unexpected error occurred.");
+});
+
 const PORT = process.env.PORT || 3009;
 app.listen(PORT, () => {
-    console.log(`Server running on  http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
