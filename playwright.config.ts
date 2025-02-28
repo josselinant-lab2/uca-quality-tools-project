@@ -1,10 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const PORT = process.env.PORT || 3009;
+
 export default defineConfig({
     testDir: "./test/e2e",
 
     /* Run tests in files in parallel */
-    fullyParallel: false,
+    fullyParallel: true,
 
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
@@ -20,7 +22,7 @@ export default defineConfig({
 
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
-        baseURL: "http://localhost:3009",
+        baseURL: `http://localhost:${PORT}`,
 
         /* Collect trace when retrying the failed test. */
         trace: "on-first-retry"
@@ -47,7 +49,7 @@ export default defineConfig({
     /* Run your local dev server before starting the tests */
     webServer: {
         command: "npm run start",
-        url: "http://127.0.0.1:3009",
+        url: `http://127.0.0.1:${PORT}`,
         reuseExistingServer: !process.env.CI
     }
 });
