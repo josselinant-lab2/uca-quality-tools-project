@@ -11,7 +11,7 @@ export type Post = {
 
 export class PostService {
     private posts: Post[];
-    
+
     constructor() {
         this.posts = [...data.posts];
     }
@@ -24,7 +24,7 @@ export class PostService {
         return this.posts.find((post) => post.id == id);
     }
 
-    createPost(postData: Omit<Post, 'id'>) {
+    createPost(postData: Omit<Post, "id">) {
         const newPost = {
             id: this.posts.length + 1,
             title: postData.title,
@@ -36,7 +36,7 @@ export class PostService {
         return newPost;
     }
 
-    updatePost(id: number, postData: Omit<Post, 'id'>) {
+    updatePost(id: number, postData: Omit<Post, "id">) {
         const index = this.posts.findIndex((post) => post.id == id);
         if (index == -1) return null;
 

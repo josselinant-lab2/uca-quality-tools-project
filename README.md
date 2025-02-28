@@ -2,12 +2,7 @@ Groupe : OULAHAL Bilal & ANTONY Josselin B1
 
 ## Utilisation de Prettier
 
-Les règles à respecter :
-    - 4 espaces pour les indentations
-    - Point-virgule à la fin de chaque ligne
-    - Double quotes pour les chaînes de caractères
-    - Pas de virgule à la fin des objets et des tableaux
-    - Largeur de 180 caractères
+Les règles à respecter : - 4 espaces pour les indentations - Point-virgule à la fin de chaque ligne - Double quotes pour les chaînes de caractères - Pas de virgule à la fin des objets et des tableaux - Largeur de 180 caractères
 
 ### Configuration de Prettier
 
@@ -86,7 +81,9 @@ Test pour la page d'accueil
 ```sh
 npx autocannon -c 50 -d 10 http://localhost:3009/
 ```
+
 ou
+
 ```
 npm run test:charge -- -c 50 -d 10 http://localhost:3009/
 ```
@@ -102,7 +99,9 @@ Test sur la liste des posts
 ```sh
 npx autocannon -c 100 -d 20 http://localhost:3009/posts
 ```
+
 ou
+
 ```
 npm run test:charge -- -c 100 -d 20 http://localhost:3009/posts
 ```
@@ -118,7 +117,9 @@ Test sur la liste d'un post spécifique
 ```sh
 npx autocannon -c 80 -d 15 http://localhost:3009/posts/1
 ```
+
 ou
+
 ```
 npm run test:charge -- -c 80 -d 15 http://localhost:3009/posts/1
 ```
@@ -134,7 +135,9 @@ Test sur la création de post
 ```sh
 npx autocannon -c 30 -d 10 http://localhost:3009/posts/new
 ```
+
 ou
+
 ```sh
 npm run test:charge -- -c 40 -d 12 http://localhost:3009/posts/1/edit
 ```
@@ -150,7 +153,9 @@ Test sur l'édition d'un post
 ```sh
 npx autocannon -c 40 -d 12 http://localhost:3009/posts/1/edit
 ```
+
 ou
+
 ```sh
 npm run test:charge -- -c 40 -d 12 http://localhost:3009/posts/1/edit
 ```
