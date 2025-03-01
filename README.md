@@ -183,3 +183,21 @@ Ensuite lancer les tests :
 ```sh
 npm run test
 ```
+
+# Utilisation de sentry
+
+Installation des packages.
+
+```sh
+npm install @sentry/node
+```
+
+Configuration dans index.ts.
+
+Lancer l'application.
+
+```sh
+npm run dev
+```
+
+Vérifier sur les ports et accéder a sentry.io pour visualiser les erreurs.
