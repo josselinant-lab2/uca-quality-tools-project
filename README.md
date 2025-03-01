@@ -272,6 +272,7 @@ npm run test:e2e-report
 Aller sur le site de [Sentry](https://sentry.io/welcome/) puis connectez vous avec ces identifants :
 
 **Identifiant** : josselinantony16@gmail.com
+
 **Mot de passe** : #Dunkerdox.42
 
 À partir de là vous aurez accès aux logs d'erreurs.
