@@ -271,7 +271,7 @@ Pour se connecter au compte du projet :
 Identifiant : josselinantony16@gmail.com
 Mot de passe : #Dunkerdox.42
 
-Création à la racine du projet d'un fichier `instrument.js` pour initialiser le SDK. On doit y voir une clé DSN que l'on récupere lors de la création du projet sur sentry.
+Création à la racine du projet d'un fichier `instrument.ts` pour initialiser le SDK. On doit y voir une clé DSN que l'on récupere lors de la création du projet sur sentry.
 
 Génération d'une erreur dans `index.ts` pour vérifier que sentry attrape bien l'erreur.
 
