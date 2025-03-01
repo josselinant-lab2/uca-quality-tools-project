@@ -265,21 +265,23 @@ npm run test:e2e-report
 
 ## Sentry
 
-Installation des packages.
+Création d'un compte sur https://sentry.io/welcome/
 
-```sh
-npm install @sentry/node
-```
+Pour se connecter au compte du projet : 
+Identifiant : josselinantony16@gmail.com
+Mot de passe : #Dunkerdox.42
 
-Configuration dans index.ts.
+Création à la racine du projet d'un fichier `instrument.js` pour initialiser le SDK. On doit y voir une clé DSN que l'on récupere lors de la création du projet sur sentry.
 
-Lancer l'application.
+Génération d'une erreur dans `index.ts` pour vérifier que sentry attrape bien l'erreur.
 
+Lancement de l'application :
 ```sh
 npm run dev
 ```
+Pour tester l'intégration de sentry http://localhost:3009/debug-sentry
 
-Vérifier sur les ports et accéder a sentry.io pour visualiser les erreurs.
+Accéder a sentry.io pour visualiser les erreurs.
 
 ## Pipeline GitHub Actions
 
