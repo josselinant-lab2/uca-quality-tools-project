@@ -265,23 +265,25 @@ npm run test:e2e-report
 
 ## Sentry
 
-Création d'un compte sur https://sentry.io/welcome/
+**Sentry** est utilisé pour permettre d'obtenir des logs complets d'erreurs.
 
-Pour se connecter au compte du projet : 
-Identifiant : josselinantony16@gmail.com
-Mot de passe : #Dunkerdox.42
+### Connexion au compte Sentry du projet
 
-Création à la racine du projet d'un fichier `instrument.ts` pour initialiser le SDK. On doit y voir une clé DSN que l'on récupere lors de la création du projet sur sentry.
+Aller sur le site de [Sentry](https://sentry.io/welcome/) puis connectez vous avec ces identifants :
 
-Génération d'une erreur dans `index.ts` pour vérifier que sentry attrape bien l'erreur.
+**Identifiant** : josselinantony16@gmail.com
+**Mot de passe** : #Dunkerdox.42
 
-Lancement de l'application :
-```sh
-npm run dev
-```
-Pour tester l'intégration de sentry http://localhost:3009/debug-sentry
+À partir de là vous aurez accès aux logs d'erreurs.
 
-Accéder a sentry.io pour visualiser les erreurs.
+### Configuration de Sentry
+
+Le fichier `instrument.ts` permet d'initialiser le SDK et de configurer Sentry pour ce projet. On doit y voir une clé DSN que l'on récupère lors de la création du projet sur Sentry.
+
+> Pour tester Sentry, une erreur est automatiquement renvoyé dans le cas où on envoye une requête GET sur cette route : http://localhost:3009/debug-sentry (penser à lancer le serveur).
+> Cette route est définie dans le fichier `index.ts`.
+>
+> Une fois l'erreur reçue, allez sur la page Sentry du projet pour avoir des infos détaillées sur l'erreur.
 
 ## Pipeline GitHub Actions
 
